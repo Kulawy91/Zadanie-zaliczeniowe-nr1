@@ -8,13 +8,18 @@ void Przykład3()
 {
     Osoba[] osoby =
     {
-      
+
         new() {
             Imię = "Juliusz",
             Nazwisko = "Cezar",
           dataUrodzenia = new (100, 7, 12),
           dataŚmierci = new (44, 3, 15)
-},
+        },
+        new() {
+           Imię = "Juliusz",
+          dataUrodzenia = new (2000, 7, 12)
+          
+        },
         new() {
             Imię = "józef",
             Nazwisko = "Piłsudski",

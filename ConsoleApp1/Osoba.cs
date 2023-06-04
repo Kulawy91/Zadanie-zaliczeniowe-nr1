@@ -13,11 +13,12 @@ namespace Zadanie1
         private string
               imię,
               nazwisko;
-           
 
-        public DateTime dataŚmierci;
-        public DateTime dataUrodzenia;
-        public TimeSpan długośćżycia;
+
+
+        public DateTime? dataUrodzenia;
+        public DateTime? dataŚmierci;
+        public TimeSpan? długośćżycia;
         public string płeć;
 
         public string ImięNazwisko
@@ -28,7 +29,12 @@ namespace Zadanie1
                nazwisko,
                płeć
                );
+                if (string.IsNullOrEmpty(imię))
+                {
+                    throw new ArgumentException("Imię nie może być puste");
+                }
             }
+
             set
             {
                 string[] rozbicie = value.Split(' ');
@@ -65,25 +71,29 @@ namespace Zadanie1
                 }
             }
         }
-        public TimeSpan DługośćŻycia
+        public TimeSpan? DługośćŻycia
         {
             get
             {
                 if (dataUrodzenia > dataŚmierci)
                 {
-                    TimeSpan długośćżycia = (dataUrodzenia - dataŚmierci);
-                   return długośćżycia;
+                    TimeSpan? długośćżycia = (dataUrodzenia - dataŚmierci);
+                    return długośćżycia;
+                }
+                else if (dataŚmierci == null)
+                {
+                    dataŚmierci = DateTime.Now;
+                    TimeSpan? długośćżycia = dataŚmierci - dataUrodzenia;
+                    return długośćżycia;
                 }
                 else
-                {
-                    TimeSpan długośćżycia = dataŚmierci - dataUrodzenia;
-                   return długośćżycia;
+                {   
+                    TimeSpan? długośćżycia = dataŚmierci - dataUrodzenia;
+                    return długośćżycia;
                 }
+               
             }
-
         }
-       
-       
-        public string Format => $"{imię},{nazwisko}";
+      public string Format => $"{imię},{nazwisko}";
     }
 }
