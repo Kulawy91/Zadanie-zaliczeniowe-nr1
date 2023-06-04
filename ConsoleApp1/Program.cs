@@ -8,40 +8,48 @@ void Przykład3()
 {
     Osoba[] osoby =
     {
-        new() {
-            Imię = "Noe"
-        },
-        new() {
-            Imię = "Adam",
-            //Kultura = "idk"
-        },
+      
         new() {
             Imię = "Juliusz",
             Nazwisko = "Cezar",
-           // Kultura = "spqr"
-        },
+          dataUrodzenia = new (100, 7, 12),
+          dataŚmierci = new (44, 3, 15)
+},
         new() {
-            Imię = "józefa",
+            Imię = "józef",
             Nazwisko = "Piłsudski",
-           // Kultura = "pol"
+          dataUrodzenia = new (1867, 12, 5),
+          dataŚmierci = new (1935, 5, 12)
         },
         new() {
-            Imię = "Nobunaga",
-            Nazwisko = "Oda",
-           // Kultura = "jap"
+            Imię = "Maria ",
+            Nazwisko = "Skłodowska-Curie",
+         dataUrodzenia = new (1867, 11, 7),
+         dataŚmierci = new (1934, 7, 4)
         },
         new() {
             Imię = "Stefan",
             Nazwisko = "Batory",
-          //  Kultura = "hun"
+         dataUrodzenia = new (1533, 9, 27),
+         dataŚmierci = new (1586, 12, 12)
         },
         new() {
             Imię = "Napoleon",
             Nazwisko = "Bonaparte",
-          // Kultura = "fra"
+          dataUrodzenia = new (1769, 8, 15),
+         dataŚmierci = new (1821, 5, 5)
         }
     };
 
     foreach (Osoba osoba in osoby)
-        WriteLine(osoba.Format);
+    {
+        if (osoba.Płeć == "Kobieta")
+        {
+            WriteLine(osoba.Format + " żyła: "+ osoba.DługośćŻycia/365.4 + " lat");
+        }
+        else
+        {
+            WriteLine(osoba.Format + " żył: " + osoba.DługośćŻycia/365.4 + " lat");
+        }
+    }
 }

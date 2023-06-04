@@ -10,41 +10,24 @@ namespace Zadanie1
     using static TransformacjeTekstu;
     internal class Osoba
     {
-        //  private const string
-
-        // formatImięNazwisko = "{0} {1}";
-        /*
-                private readonly static Dictionary<string, string>
-                    formatPełnegoImienia = new()
-                    {
-                        ["Kobieta"] = formatImięNazwisko,
-                        ["Mężczyzna"] = formatImięNazwisko,
-                    };
-
-        */
-        /*    static Osoba()
-            {
-                foreach (string płeć in Płeć)
-                    if (!formatPełnegoImienia.ContainsKey(kultura))
-                        formatPełnegoImienia[kultura] = formatDomyślny;
-            }
-        */
         private string
-            imię,
-            nazwisko,
-            płeć;
+              imię,
+              nazwisko;
+           
 
-
+        public DateTime dataŚmierci;
+        public DateTime dataUrodzenia;
+        public TimeSpan długośćżycia;
+        public string płeć;
 
         public string ImięNazwisko
         {
             get {
-
                 return string.Format(
-                imię,
-                nazwisko,
-                płeć
-                );
+               imię,
+               nazwisko,
+               płeć
+               );
             }
             set
             {
@@ -82,6 +65,25 @@ namespace Zadanie1
                 }
             }
         }
-        public string Format => $"{imię},{nazwisko},{Płeć}";
+        public TimeSpan DługośćŻycia
+        {
+            get
+            {
+                if (dataUrodzenia > dataŚmierci)
+                {
+                    TimeSpan długośćżycia = (dataUrodzenia - dataŚmierci);
+                   return długośćżycia;
+                }
+                else
+                {
+                    TimeSpan długośćżycia = dataŚmierci - dataUrodzenia;
+                   return długośćżycia;
+                }
+            }
+
+        }
+       
+       
+        public string Format => $"{imię},{nazwisko}";
     }
 }
